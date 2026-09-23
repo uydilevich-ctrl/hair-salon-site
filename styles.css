@@ -91,26 +91,12 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 0.98; let
   0% { transform: translate(0, 0) scale(1); }
   100% { transform: translate(-6%, 5%) scale(1.12); }
 }
-.hero-portrait {
-  /* портрет «парит» в градиенте, как в референсе */
-  position: absolute;
-  right: 11%; top: 4%;
-  height: 88%; aspect-ratio: 640 / 680;
-}
-.hero-photo {
-  display: block; width: 100%; height: 100%;
-  object-fit: cover;
-  filter: saturate(.78) sepia(.18) brightness(1.03) blur(.4px);
-  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 48%, #000 56%, transparent 100%);
-          mask-image: radial-gradient(ellipse 50% 50% at 50% 48%, #000 56%, transparent 100%);
-}
-
 /* пряди — тонкие линии */
-.strands { /* линии огибают силуэт и выходят за пределы портрета */
+.strands {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  overflow: visible;
   pointer-events: none;
+  z-index: 0;
 }
 .strands path {
   fill: none;
@@ -483,10 +469,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 0.98; let
   .strands path { stroke-dashoffset: 0; }
 }
 @media (max-width: 760px) {
-  .hero-portrait {
-    right: 50%; transform: translateX(50%);
-    top: 64px; height: auto; width: 92%;
-  }
+  .strands { opacity: .55; }
   .hero-bg::before {
     background: linear-gradient(180deg, rgba(59, 70, 52, .55) 0%, transparent 20%, transparent 40%, rgba(59, 70, 52, .55) 100%);
   }
