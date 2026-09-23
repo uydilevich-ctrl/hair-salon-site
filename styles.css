@@ -94,12 +94,14 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 0.98; let
 .hero-photo {
   position: absolute;
   right: 0; top: 0;
-  height: 100%; width: 70%;
-  object-fit: cover;
-  filter: blur(1.5px) saturate(.9);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 45%);
-          mask-image: linear-gradient(90deg, transparent 0%, #000 45%);
-  opacity: .9;
+  height: 100%; width: 62%;
+  object-fit: cover; object-position: 50% 20%;
+  /* приглушаем бирюзу снимка под шалфейно-бежевую палитру */
+  filter: saturate(.72) sepia(.22) brightness(1.02);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 42%), linear-gradient(180deg, #000 55%, transparent 100%);
+  -webkit-mask-composite: source-in;
+          mask-image: linear-gradient(90deg, transparent 0%, #000 42%), linear-gradient(180deg, #000 55%, transparent 100%);
+          mask-composite: intersect;
 }
 
 /* пряди — тонкие линии */
@@ -481,6 +483,15 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 0.98; let
 }
 @media (max-width: 760px) {
   .strands { opacity: .55; }
+  .hero-photo {
+    width: 100%; height: 72%;
+    object-position: 60% 15%;
+    -webkit-mask-image: linear-gradient(180deg, #000 45%, transparent 100%);
+            mask-image: linear-gradient(180deg, #000 45%, transparent 100%);
+  }
+  .hero-bg::before {
+    background: linear-gradient(180deg, rgba(59, 70, 52, .55) 0%, transparent 20%, transparent 40%, rgba(59, 70, 52, .55) 100%);
+  }
 }
 @media (max-width: 760px) {
   .row { grid-template-columns: minmax(0, 1fr) auto; column-gap: 10px; }
