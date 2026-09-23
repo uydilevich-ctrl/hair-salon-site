@@ -83,29 +83,31 @@ def wordmark(fname, color, size=120, tracking=0.28):
     return inner, (x1 - x0) + 2 * pad, (y1 - y0) + 2 * pad
 
 
-def lockup_horizontal(fname, color, accent, sub="HAIR STUDIO"):
+def lockup_horizontal(fname, color, accent, sub="HAIR STUDIO", style="classic"):
     size, tr = 96, 0.26
     x0, y0, x1, y1 = ink_bounds(fname, "TORTÉ", size, tr)
-    m, mw, mh = placed_mark("classic", 20, 20, 1.75, color, stroke=2.2)
+    m, mw, mh = placed_mark(style, 20, 20, 1.75, color, stroke=2.2)
     tx = 20 + mw + 34
     # базовая линия надписи — на уровне «пуза» черепахи
     belly_y = 20 + (BASE - 30) * 1.75
     d, _ = text_path(fname, "TORTÉ", size, tr, tx - x0, belly_y)
-    sd, sw = text_path("jost", sub, 20, 0.5, 0, 0)
-    sx0, sy0, sx1, sy1 = ink_bounds("jost", sub, 20, 0.5)
     word_w = x1 - x0
-    sub_x = tx + (word_w - (sx1 - sx0)) / 2 - sx0
+    if sub:
+        sd, sw = text_path("jost", sub, 20, 0.5, 0, 0)
+        sx0, sy0, sx1, sy1 = ink_bounds("jost", sub, 20, 0.5)
+        sub_x = tx + (word_w - (sx1 - sx0)) / 2 - sx0
     sub_y = belly_y + 44
     line_y = belly_y + 20
-    inner = (m + f'<path d="{d}" fill="{color}"/>'
-             f'<path d="M{tx:.1f} {line_y:.1f} h{word_w:.1f}" stroke="{accent}" stroke-width="1.2"/>'
-             f'<path d="{sd}" fill="{color}" transform="translate({sub_x:.2f} {sub_y:.2f})"/>')
+    inner = m + f'<path d="{d}" fill="{color}"/>'
+    if sub:
+        inner += (f'<path d="M{tx:.1f} {line_y:.1f} h{word_w:.1f}" stroke="{accent}" stroke-width="1.2"/>'
+                  f'<path d="{sd}" fill="{color}" transform="translate({sub_x:.2f} {sub_y:.2f})"/>')
     return inner, tx + word_w + 24, 20 + 88 * 1.75 + 20
 
 
-def lockup_stacked(fname, color, accent, sub="HAIR STUDIO · MOSCOW"):
+def lockup_stacked(fname, color, accent, sub="HAIR STUDIO · MOSCOW", style="classic"):
     W = 560
-    m, mw, mh = placed_mark("classic", 0, 24, 1.7, color)
+    m, mw, mh = placed_mark(style, 0, 24, 1.7, color)
     m = m.replace('translate(0.00 24.00)', f'translate({(W - mw) / 2:.2f} 24.00)')
     size, tr = 104, 0.26
     x0, y0, x1, y1 = ink_bounds(fname, "TORTÉ", size, tr)
@@ -179,6 +181,29 @@ inner, vb = mark("minimal", stroke=3.2, color=IVORY, eye=True)
 files["favicon.svg"] = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">'
                         f'<circle cx="32" cy="32" r="32" fill="{OLIVE}"/>'
                         f'<g transform="translate(5 16) scale(0.315) translate(-12 -30)">{inner}</g></svg>')
+
+# ---- финальный комплект: «Купол» + Cormorant ----
+final = {}
+for suffix, col in (("", OLIVE), ("-ivory", IVORY)):
+    inner, vb = mark("globe", color=col)
+    vx, vy, vw, vh = map(float, vb.split())
+    final[f"torte-mark{suffix}.svg"] = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{vb}" '
+                                       f'width="{vw*3:.0f}" height="{vh*3:.0f}">{inner}</svg>')
+    inner, w, h = lockup_stacked("cormorant", col, GOLD, style="globe")
+    final[f"torte-logo-stacked{suffix}.svg"] = svg(inner, w, h)
+    inner, w, h = lockup_horizontal("cormorant", col, GOLD, style="globe")
+    final[f"torte-logo-horizontal{suffix}.svg"] = svg(inner, w, h)
+    inner, w, h = wordmark("cormorant", col)
+    final[f"torte-wordmark{suffix}.svg"] = svg(inner, w, h)
+    inner, w, h = lockup_horizontal("cormorant", col, GOLD, sub="", style="globe")
+    final[f"torte-logo-compact{suffix}.svg"] = svg(inner, w, h)
+inner, vb = mark("globe", stroke=3.4, color=IVORY)
+final["favicon.svg"] = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">'
+                        f'<circle cx="32" cy="32" r="32" fill="{OLIVE}"/>'
+                        f'<g transform="translate(5 17) scale(0.315) translate(-12 -30)">{inner}</g></svg>')
+FINAL = os.path.join(OUT, "final"); os.makedirs(FINAL, exist_ok=True)
+for name, content in final.items():
+    open(os.path.join(FINAL, name), "w").write(content)
 
 for name, content in files.items():
     open(os.path.join(OUT, name), "w").write(content)
