@@ -82,3 +82,20 @@ const SERVICES = [
     ],
   },
 ];
+
+// Работы «до / после». Положите фото в img/works/ с этими именами
+// (вертикальные, примерно 900×1200). Пока файлов нет — показываются заглушки.
+const WORKS = [
+  { title: 'Балаяж', note: 'Окрашивание · длинные волосы', before: 'img/works/1-before.jpg', after: 'img/works/1-after.jpg' },
+  { title: 'Стрижка каре', note: 'Женская стрижка + укладка', before: 'img/works/2-before.jpg', after: 'img/works/2-after.jpg' },
+  { title: 'Кератин', note: 'Уход и выпрямление', before: 'img/works/3-before.jpg', after: 'img/works/3-after.jpg' },
+];
+
+// Фото салона. Первое фото — большое. Файлы в img/salon/.
+const SALON_PHOTOS = [
+  { src: 'img/salon/1.jpg', caption: 'Главный зал' },
+  { src: 'img/salon/2.jpg', caption: 'Зона окрашивания' },
+  { src: 'img/salon/3.jpg', caption: 'Мойка' },
+  { src: 'img/salon/4.jpg', caption: 'Ресепшен' },
+  { src: 'img/salon/5.jpg', caption: 'Детали' },
+];

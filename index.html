@@ -32,7 +32,8 @@
     <ul class="menu">
       <li><a href="#services">Услуги</a></li>
       <li><a href="#prices">Прайс</a></li>
-      <li><a href="#approach">О нас</a></li>
+      <li><a href="#works">Работы</a></li>
+      <li><a href="#approach">О салоне</a></li>
       <li><a href="#contacts">Контакты</a></li>
       <li><a class="pill pill-light js-tg" href="#" data-text="Здравствуйте! Хочу записаться.">Записаться <i>→</i></a></li>
     </ul>
@@ -67,10 +68,20 @@
   <div class="price-list" id="price-list"></div>
 </section>
 
+<!-- ============ WORKS ============ -->
+<section class="frame paper" id="works">
+  <div class="section-head">
+    <span class="eyebrow">03 — Работы</span>
+    <h2>До и <em>после</em></h2>
+    <p class="muted">Потяните разделитель, чтобы сравнить.</p>
+  </div>
+  <div class="works" id="works-list"></div>
+</section>
+
 <!-- ============ APPROACH ============ -->
 <section class="frame mist" id="approach">
   <div class="section-head">
-    <span class="eyebrow">03 — О нас</span>
+    <span class="eyebrow">04 — О салоне</span>
     <h2>Спокойно. Бережно. <em>Точно.</em></h2>
   </div>
   <div class="points">
@@ -78,6 +89,7 @@
     <div class="point"><span class="num">ii.</span><h3>Профессиональные составы</h3><p>Работаем на проверенных красителях и уходовых линиях, бережных к структуре волоса.</p></div>
     <div class="point"><span class="num">iii.</span><h3>Время только для вас</h3><p>Записываем с запасом, чтобы мастер никуда не торопился.</p></div>
   </div>
+  <div class="gallery" id="gallery"></div>
 </section>
 
 <!-- ============ CONTACTS ============ -->
@@ -85,7 +97,7 @@
   <div class="hero-bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b3"></span><span class="blob b4"></span></div>
   <div class="contacts-inner">
     <div>
-      <span class="eyebrow light">04 — Запись</span>
+      <span class="eyebrow light">05 — Запись</span>
       <h2>Запишитесь<br><em>в пару касаний</em></h2>
       <p>Напишите нам в Telegram — ответим, подберём мастера и удобное время.</p>
       <div class="actions">
@@ -101,6 +113,12 @@
     </dl>
   </div>
 </section>
+
+<dialog class="lightbox" id="lightbox">
+  <button class="lb-close" aria-label="Закрыть">×</button>
+  <img alt="">
+  <p class="lb-caption"></p>
+</dialog>
 
 <footer class="footer">
   <span>© <span id="year"></span> Прядь — studio</span>
