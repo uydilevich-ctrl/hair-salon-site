@@ -63,7 +63,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 0.98; let
   isolation: isolate;
   outline-color: rgba(255, 255, 255, .3);
   box-shadow: 0 30px 70px -40px rgba(59, 70, 52, .6);
-  background: #7F8E70;
+  background: #8E9679; /* шалфей, смешанный с бежевым */
 }
 .hero-bg { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
 .hero-bg::after { /* зерно */
@@ -79,13 +79,13 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 0.98; let
   filter: blur(70px);
   animation: drift 22s ease-in-out infinite alternate;
 }
-.b1 { width: 70%; height: 90%; left: 30%; top: -25%; background: radial-gradient(circle, #F6F1E8 0%, #A8B89A 45%, transparent 70%); }
-.b2 { width: 45%; height: 60%; left: 50%; top: 20%; background: radial-gradient(circle, #E8DDCC 0%, #C5A66A 45%, transparent 70%); opacity: .75; animation-duration: 28s; }
+.b1 { width: 75%; height: 95%; left: 28%; top: -28%; background: radial-gradient(circle, #F6F1E8 0%, #E3D8C2 32%, #B4BE9F 55%, transparent 72%); }
+.b2 { width: 62%; height: 80%; left: 40%; top: 12%; background: radial-gradient(circle, #F1E8D8 0%, #E8DDCC 30%, rgba(197, 166, 106, .55) 55%, transparent 72%); opacity: .95; animation-duration: 28s; }
 .b3 { width: 70%; height: 80%; left: -20%; top: 45%; background: radial-gradient(circle, #4F5D45 0%, #5E6D52 45%, transparent 72%); animation-duration: 26s; animation-delay: -8s; }
 .b4 { width: 60%; height: 70%; right: -15%; bottom: -30%; background: radial-gradient(circle, #3B4634 0%, #4F5D45 50%, transparent 72%); animation-duration: 30s; }
 .hero-bg::before { /* затемнение снизу для читаемости текста */
   content: ''; position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(180deg, transparent 45%, rgba(59, 70, 52, .45) 100%);
+  background: linear-gradient(180deg, rgba(59, 70, 52, .3) 0%, transparent 24%, transparent 45%, rgba(59, 70, 52, .45) 100%);
 }
 @keyframes drift {
   0% { transform: translate(0, 0) scale(1); }
@@ -111,15 +111,15 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 0.98; let
 }
 .strands path {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.85);
-  stroke-width: 1.2;
+  stroke: rgba(230, 207, 154, .95);
+  stroke-width: 1.3;
   vector-effect: non-scaling-stroke;
   stroke-dasharray: 2600;
   stroke-dashoffset: 2600;
   animation: draw 4.5s cubic-bezier(.6, .05, .3, 1) .3s forwards;
 }
-.strands .s2 { stroke: rgba(255, 255, 255, .45); animation-delay: .9s; }
-.strands .s3 { stroke: rgba(255, 255, 255, .55); animation-delay: 1.4s; }
+.strands .s2 { stroke: rgba(230, 207, 154, .55); animation-delay: .9s; }
+.strands .s3 { stroke: rgba(230, 207, 154, .7); animation-delay: 1.4s; }
 @keyframes draw { to { stroke-dashoffset: 0; } }
 
 /* навигация */
@@ -384,6 +384,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 0.98; let
 /* ------- контакты ------- */
 .contacts { min-height: auto; }
 .contacts .b4 { opacity: .9; }
+.contacts .b1 { top: -55%; left: 20%; }
 .contacts-inner {
   display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: end;
 }
