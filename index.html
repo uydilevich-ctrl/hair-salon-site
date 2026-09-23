@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Прядь — студия волос в Москве</title>
+<meta name="description" content="Стрижки, окрашивание, наращивание, укладки и уход за волосами в Москве. Запись в Telegram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="frame hero" id="top">
+  <div class="hero-bg" aria-hidden="true">
+    <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span>
+    <!-- Положите фото в img/hero.jpg — оно появится здесь автоматически -->
+    <img class="hero-photo" src="img/hero.jpg" alt="" onerror="this.remove()">
+  </div>
+
+  <svg class="strands" viewBox="0 0 1200 800" preserveAspectRatio="none" aria-hidden="true">
+    <path class="s1" d="M760 -20 C 620 120, 380 260, 430 420 C 470 560, 700 470, 640 380 C 590 300, 420 420, 520 600 C 590 720, 560 800, 540 840"/>
+    <path class="s2" d="M820 -20 C 700 160, 520 300, 600 470 C 660 590, 820 520, 790 440"/>
+    <path class="s3" d="M300 520 C 520 460, 760 420, 880 440 C 960 455, 900 500, 820 490"/>
+  </svg>
+
+  <nav class="nav">
+    <a class="logo" href="#top"><span class="dot"></span>прядь<span class="dash">—</span>studio</a>
+    <button class="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span></button>
+    <ul class="menu">
+      <li><a href="#services">Услуги</a></li>
+      <li><a href="#prices">Прайс</a></li>
+      <li><a href="#approach">О нас</a></li>
+      <li><a href="#contacts">Контакты</a></li>
+      <li><a class="pill pill-light js-tg" href="#" data-text="Здравствуйте! Хочу записаться.">Записаться <i>→</i></a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-content">
+    <h1 class="reveal">Волосы,<br>которые <em>говорят</em><br>за вас.</h1>
+    <div class="hero-side reveal d2">
+      <p>Стрижки, окрашивание, наращивание и уход в спокойной атмосфере. Мы подбираем форму и цвет под вас — без спешки и шаблонов.</p>
+      <a class="pill pill-sage" href="#prices">Выбрать услугу <i>→</i></a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SERVICES ============ -->
+<section class="frame paper" id="services">
+  <div class="section-head">
+    <span class="eyebrow">01 — Услуги</span>
+    <h2>Всё, что нужно <em>вашим волосам</em></h2>
+  </div>
+  <div class="cards" id="cards"></div>
+</section>
+
+<!-- ============ PRICES ============ -->
+<section class="frame paper" id="prices">
+  <div class="section-head">
+    <span class="eyebrow">02 — Прайс</span>
+    <h2>Цены</h2>
+    <p class="muted">Итоговая стоимость зависит от длины и густоты волос — мастер назовёт её на консультации.</p>
+  </div>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="price-list" id="price-list"></div>
+</section>
+
+<!-- ============ APPROACH ============ -->
+<section class="frame mist" id="approach">
+  <div class="section-head">
+    <span class="eyebrow">03 — О нас</span>
+    <h2>Спокойно. Бережно. <em>Точно.</em></h2>
+  </div>
+  <div class="points">
+    <div class="point"><span class="num">i.</span><h3>Консультация перед работой</h3><p>Обсуждаем форму, цвет и уход до того, как взять ножницы. Без сюрпризов в чеке.</p></div>
+    <div class="point"><span class="num">ii.</span><h3>Профессиональные составы</h3><p>Работаем на проверенных красителях и уходовых линиях, бережных к структуре волоса.</p></div>
+    <div class="point"><span class="num">iii.</span><h3>Время только для вас</h3><p>Записываем с запасом, чтобы мастер никуда не торопился.</p></div>
+  </div>
+</section>
+
+<!-- ============ CONTACTS ============ -->
+<section class="frame hero contacts" id="contacts">
+  <div class="hero-bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b3"></span><span class="blob b4"></span></div>
+  <div class="contacts-inner">
+    <div>
+      <span class="eyebrow light">04 — Запись</span>
+      <h2>Запишитесь<br><em>в пару касаний</em></h2>
+      <p>Напишите нам в Telegram — ответим, подберём мастера и удобное время.</p>
+      <div class="actions">
+        <a class="pill pill-light js-tg" href="#" data-text="Здравствуйте! Хочу записаться.">Написать в Telegram <i>→</i></a>
+        <a class="pill pill-ghost js-wa" href="#">WhatsApp</a>
+        <a class="pill pill-ghost js-phone" href="#">Позвонить</a>
+      </div>
+    </div>
+    <dl class="info">
+      <div><dt>Адрес</dt><dd class="js-address"></dd></div>
+      <div><dt>Часы работы</dt><dd class="js-hours"></dd></div>
+      <div><dt>Телефон</dt><dd class="js-phone-text"></dd></div>
+    </dl>
+  </div>
+</section>
+
+<footer class="footer">
+  <span>© <span id="year"></span> Прядь — studio</span>
+  <a href="#top">Наверх ↑</a>
+</footer>
+
+<script src="data.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
