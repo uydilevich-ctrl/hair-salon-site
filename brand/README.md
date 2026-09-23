@@ -1,5 +1,20 @@
 # TORTÉ — логотип (варианты)
 
+## Черепаха с кулона (`pendant/`)
+
+Контур обведён вручную по фото кулона и выровнен.
+
+| Файл | Что это |
+|---|---|
+| `turtle-gold.svg` | Золотая «ювелирная» версия (градиент, блик, тень, глаз-камушек) |
+| `turtle-gold-charm.svg` | То же с колечком и бейлом подвески |
+| `turtle-olive.svg`, `turtle-ivory.svg` | Однотонные версии для печати/гравировки |
+| `lockup-gold-stacked*.svg` | Золотая черепаха + TORTÉ (`-dark` — для тёмного фона, `-marcellus` — другой шрифт) |
+| `lockup-gold-horizontal.svg`, `lockup-olive-*.svg` | Горизонтальная и однотонная композиции |
+| `png/*.png` | Золотые версии в PNG 2400 px с прозрачным фоном |
+
+## Упрощённые варианты (`logo/`)
+
 `logo/` — готовые SVG, все надписи переведены в кривые (шрифты для печати не нужны).
 
 | Файл | Что это |
@@ -22,3 +37,4 @@
 `src/build.py` генерирует все файлы. Нужны `pip install fonttools` и шрифты
 в `src/fonts/` (Google Fonts, лицензия OFL): CormorantGaramond, Marcellus,
 Italiana, BodoniModa, Jost (.ttf). Запуск: `python3 src/build.py logo`.
+Контур кулона — `src/paths.py`, отрисовка — `src/pendant.py`, композиции — `src/lockups.py`.
