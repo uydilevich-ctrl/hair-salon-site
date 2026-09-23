@@ -19,11 +19,15 @@
     <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span>
   </div>
 
-  <svg class="strands" viewBox="0 0 1200 800" preserveAspectRatio="none" aria-hidden="true">
-    <path class="s1" d="M760 -20 C 620 120, 380 260, 430 420 C 470 560, 700 470, 640 380 C 590 300, 420 420, 520 600 C 590 720, 560 800, 540 840"/>
-    <path class="s2" d="M820 -20 C 700 160, 520 300, 600 470 C 660 590, 820 520, 790 440"/>
-    <path class="s3" d="M300 520 C 520 460, 760 420, 880 440 C 960 455, 900 500, 820 490"/>
-  </svg>
+  <!-- Портрет (img/hero.png, прозрачный фон) и золотые линии вокруг силуэта в одной системе координат -->
+  <div class="hero-portrait" aria-hidden="true">
+    <img class="hero-photo" src="img/hero.png" alt="" onerror="this.parentNode.remove()">
+    <svg class="strands" viewBox="0 0 579 1035">
+      <path class="s1" d="M-260 930 C-130 780 -20 650 20 480 C50 330 10 160 110 60 C210 -40 420 -45 520 35 C600 105 625 260 605 420 C595 520 650 600 780 620"/>
+      <path class="s2" d="M840 360 C720 380 610 430 596 515 C586 578 636 612 682 586 C722 562 712 505 660 505 C596 505 566 585 566 670"/>
+      <path class="s3" d="M-560 760 C-340 720 -140 725 -40 790 C40 842 20 905 -30 895 C-72 886 -62 842 -20 835"/>
+    </svg>
+  </div>
 
   <nav class="nav">
     <a class="logo" href="#top"><img src="brand/final/torte-logo-nav-gold-light.svg" alt="TORTÉ — hair studio, Moscow"></a>
