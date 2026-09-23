@@ -5,6 +5,7 @@
   --beige: #E8DDCC;   /* 10% — подложки */
   --olive: #4F5D45;   /*  7% — текст, кнопки */
   --gold: #C5A66A;    /*  3% — акценты */
+  --gold-light: #E6CF9A;
 
   /* производные оттенки */
   --ink: #2F3829;
@@ -127,8 +128,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 0.98; let
   display: flex; align-items: center; justify-content: space-between;
   gap: 24px;
 }
-.logo { display: inline-flex; align-items: center; }
-.logo img { height: 58px; width: auto; display: block; }
+.logo { display: inline-flex; filter: drop-shadow(0 1px 12px rgba(47, 56, 41, .45)); }
+.logo img { height: 66px; width: auto; display: block; }
 .menu { list-style: none; display: flex; align-items: center; gap: clamp(16px, 2.6vw, 36px); }
 .menu a:not(.pill) {
   font-size: 11px; font-weight: 400;
@@ -271,12 +272,6 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 0.98; let
 .fade { animation: fade .5s ease; }
 @keyframes fade { from { opacity: 0; transform: translateY(8px); } }
 
-/* ------- о нас ------- */
-.points { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 4vw, 56px); }
-.point .num { font-family: var(--serif); font-style: italic; font-size: 24px; color: var(--gold); }
-.point h3 { font-size: clamp(26px, 2.4vw, 34px); margin: 14px 0 12px; }
-.point p { color: var(--ink-soft); font-size: 15px; line-height: 1.65; }
-
 /* ------- до / после ------- */
 .works { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2.4vw, 32px); }
 .work figcaption { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-top: 16px; }
@@ -291,7 +286,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 0.98; let
   touch-action: pan-y;
 }
 .layer { position: absolute; inset: 0; }
-.layer img, .shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.layer img, .owner-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .layer.after {
   background:
     radial-gradient(60% 50% at 70% 25%, #F6F1E8 0%, transparent 70%),
@@ -348,50 +343,43 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 0.98; let
 .compare input::-webkit-slider-thumb { -webkit-appearance: none; width: 44px; height: 100vh; }
 .compare:has(input:focus-visible) .handle i { outline: 2px solid var(--white); outline-offset: 3px; }
 
-/* ------- фото салона ------- */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: clamp(160px, 18vw, 260px);
-  gap: clamp(10px, 1.4vw, 18px);
-  margin-top: clamp(40px, 6vw, 80px);
+/* ------- основатель ------- */
+.owner {
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(28px, 5vw, 80px); align-items: center;
 }
-.shot {
-  position: relative; overflow: hidden;
-  border-radius: 20px;
+.owner-photo {
+  position: relative; margin: 0;
+  aspect-ratio: 3 / 4; border-radius: 22px; overflow: hidden;
   background:
-    radial-gradient(70% 60% at 30% 30%, #F6F1E8 0%, transparent 70%),
-    radial-gradient(60% 60% at 80% 80%, #A8B89A 0%, transparent 70%),
-    #CFD6C3;
+    radial-gradient(80% 60% at 50% 20%, rgba(246, 241, 232, .55) 0%, transparent 70%),
+    #A8B89A;
 }
-.shot:nth-child(2n) { background: radial-gradient(70% 70% at 70% 20%, #F6F1E8 0%, transparent 70%), #A8B89A; }
-.shot:nth-child(3n) { background: radial-gradient(70% 70% at 20% 80%, #F6F1E8 0%, transparent 70%), #D9CDB5; }
-.shot.s1 { grid-column: span 2; grid-row: span 2; }
-.shot img { transition: transform 1.2s cubic-bezier(.2, .7, .2, 1); }
-.shot.loaded { cursor: zoom-in; }
-.shot.loaded:hover img { transform: scale(1.04); }
-.shot figcaption {
-  position: absolute; left: 14px; bottom: 14px;
+.owner-photo:not(.loaded)::before { /* силуэт-заглушка */
+  content: ''; position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+  width: 62%; aspect-ratio: 1 / 1.05;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(79, 93, 69, .28) 0 22%, transparent 22.5%),
+    radial-gradient(ellipse 50% 42% at 50% 100%, rgba(79, 93, 69, .28) 0 99%, transparent 100%);
+}
+.owner-photo figcaption {
+  position: absolute; left: 16px; top: 16px;
   padding: 6px 12px; border-radius: 999px;
   font-size: 10px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
   background: rgba(246, 241, 232, .9); color: var(--ink);
 }
-
-.lightbox {
-  margin: auto; padding: 0; border: 0;
-  background: transparent;
-  max-width: min(92vw, 1400px); max-height: 92vh;
-  overflow: visible;
+.owner-photo.loaded figcaption { display: none; }
+.owner-text h2 { font-size: clamp(40px, 5.5vw, 76px); font-weight: 300; margin-bottom: 14px; }
+.owner-role { font-size: 12px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--olive); margin-bottom: 26px; }
+.owner-bio { display: grid; gap: 14px; max-width: 54ch; color: var(--ink-soft); font-size: 16px; line-height: 1.7; }
+.owner-quote {
+  margin: 30px 0 34px; padding-left: 20px;
+  border-left: 1px solid var(--gold);
+  font-family: var(--serif); font-style: italic; font-size: clamp(22px, 2.2vw, 28px); line-height: 1.3;
+  color: var(--olive); max-width: 30ch;
 }
-.lightbox::backdrop { background: rgba(47, 56, 41, .85); backdrop-filter: blur(10px); }
-.lightbox img { display: block; max-width: 100%; max-height: 84vh; border-radius: 18px; }
-.lb-caption { color: var(--white); text-align: center; margin-top: 12px; font-family: var(--serif); font-size: 20px; }
-.lb-close {
-  position: absolute; top: -18px; right: -18px;
-  width: 40px; height: 40px; border-radius: 50%;
-  border: 0; cursor: pointer;
-  background: var(--white); color: var(--ink); font-size: 22px; line-height: 1;
-}
+.pill-olive { background: var(--olive); color: var(--ivory); }
+.pill-olive:hover { background: var(--olive-deep); }
 
 /* ------- контакты ------- */
 .contacts { min-height: auto; }
@@ -419,23 +407,22 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 0.98; let
 /* появление при прокрутке */
 .rise { opacity: 0; transform: translateY(28px); transition: opacity 1s ease, transform 1s cubic-bezier(.2, .7, .2, 1); }
 .rise.in { opacity: 1; transform: none; }
-.cards .rise:nth-child(2), .points .rise:nth-child(2) { transition-delay: .1s; }
-.cards .rise:nth-child(3), .points .rise:nth-child(3) { transition-delay: .2s; }
+.cards .rise:nth-child(2) { transition-delay: .1s; }
+.cards .rise:nth-child(3) { transition-delay: .2s; }
 .cards .rise:nth-child(5) { transition-delay: .1s; }
 .cards .rise:nth-child(6) { transition-delay: .2s; }
-.works .rise:nth-child(2), .gallery .rise:nth-child(2) { transition-delay: .1s; }
-.works .rise:nth-child(3), .gallery .rise:nth-child(3) { transition-delay: .2s; }
+.works .rise:nth-child(2) { transition-delay: .1s; }
+.works .rise:nth-child(3) { transition-delay: .2s; }
 
 /* ------- адаптив ------- */
 @media (max-width: 960px) {
   .cards { grid-template-columns: repeat(2, 1fr); }
   .card { padding: 28px 20px 30px !important; border-right: none !important; }
   .card:nth-child(odd) { border-right: 1px solid var(--line) !important; }
-  .points { grid-template-columns: 1fr; }
   .contacts-inner { grid-template-columns: 1fr; }
+  .owner { grid-template-columns: 1fr; }
+  .owner-photo { max-width: 520px; }
   .works { grid-template-columns: repeat(2, 1fr); }
-  .gallery { grid-template-columns: repeat(2, 1fr); }
-  .shot.s1 { grid-column: span 2; grid-row: span 1; }
 }
 
 @media (max-width: 760px) {
@@ -484,9 +471,6 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 0.98; let
   .price { justify-self: start; }
   .tiers-note { text-align: left; }
   .works { grid-template-columns: 1fr; }
-  .gallery { grid-auto-rows: 150px; }
-  .shot.s1 { grid-row: span 2; }
-  .lb-close { top: 8px; right: 8px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -503,8 +487,5 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 0.98; let
   .price.tiers b { margin: 0 3px; }
 }
 @media (max-width: 760px) {
-  .shot figcaption { left: 10px; bottom: 10px; letter-spacing: .08em; white-space: nowrap; }
-}
-@media (max-width: 760px) {
-  .logo img { height: 46px; }
+  .logo img { height: 50px; }
 }

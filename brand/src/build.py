@@ -121,6 +121,36 @@ def lockup_stacked(fname, color, accent, sub="HAIR STUDIO · MOSCOW", style="cla
     return inner, W, base + 70
 
 
+def lockup_nav(color, rule_color=None, style="globe"):
+    """Шапка сайта: знак + TORTÉ + линия + подпись, подпись точно по ширине надписи."""
+    rule_color = rule_color or color
+    m, mw, mh = placed_mark(style, 0, 0, 1.7, color, stroke=2.6)
+    size, tr = 100, 0.24
+    x0, y0, x1, y1 = ink_bounds("cormorant", "TORTÉ", size, tr)
+    word_w = x1 - x0
+    tx = mw + 30
+    top = 8
+    base = top - y0
+    d, _ = text_path("cormorant", "TORTÉ", size, tr, tx - x0, base)
+    sub, ss = "HAIR STUDIO · MOSCOW", 25
+    # подбираем разрядку, чтобы подпись была ровно шириной с TORTÉ
+    lo, hi = 0.0, 2.0
+    for _ in range(40):
+        mid = (lo + hi) / 2
+        a0, _, a1, _ = ink_bounds("jost", sub, ss, mid)
+        lo, hi = (mid, hi) if (a1 - a0) < word_w else (lo, mid)
+    sx0, sy0, sx1, sy1 = ink_bounds("jost", sub, ss, lo)
+    rule_y = base + 22
+    sub_base = rule_y + 16 - sy0
+    sd, _ = text_path("jost", sub, ss, lo, tx - sx0, sub_base)
+    H = max(mh, sub_base + sy1 + 4)
+    m = m.replace("translate(0.00 0.00)", f"translate(0.00 {(H - mh) / 2:.2f})")
+    inner = (m + f'<path d="{d}" fill="{color}"/>'
+             f'<path d="M{tx:.1f} {rule_y:.1f} h{word_w:.1f}" stroke="{rule_color}" stroke-width="2"/>'
+             f'<path d="{sd}" fill="{color}"/>')
+    return inner, tx + word_w + 4, H
+
+
 def seal(color, accent, fname="cormorant"):
     """Круглая печать: знак в центре, надпись по кругу (каждая буква — контур)."""
     S, c, r = 420, 210, 150
@@ -184,7 +214,7 @@ files["favicon.svg"] = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64
 
 # ---- финальный комплект: «Купол» + Cormorant ----
 final = {}
-for suffix, col in (("", OLIVE), ("-ivory", IVORY)):
+for suffix, col in (("", OLIVE), ("-ivory", IVORY), ("-gold", GOLD)):
     inner, vb = mark("globe", color=col)
     vx, vy, vw, vh = map(float, vb.split())
     final[f"torte-mark{suffix}.svg"] = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{vb}" '
@@ -201,6 +231,9 @@ inner, vb = mark("globe", stroke=3.4, color=IVORY)
 final["favicon.svg"] = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">'
                         f'<circle cx="32" cy="32" r="32" fill="{OLIVE}"/>'
                         f'<g transform="translate(5 17) scale(0.315) translate(-12 -30)">{inner}</g></svg>')
+for suffix, col in (("", OLIVE), ("-ivory", IVORY), ("-gold", GOLD), ("-gold-light", "#E6CF9A")):
+    inner, w, h = lockup_nav(col)
+    final[f"torte-logo-nav{suffix}.svg"] = svg(inner, w, h)
 FINAL = os.path.join(OUT, "final"); os.makedirs(FINAL, exist_ok=True)
 for name, content in final.items():
     open(os.path.join(FINAL, name), "w").write(content)

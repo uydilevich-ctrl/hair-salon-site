@@ -89,27 +89,15 @@
     r.addEventListener('input', () => r.parentNode.style.setProperty('--pos', `${r.value}%`))
   );
 
-  // Фото салона + просмотр крупно
-  const gallery = document.getElementById('gallery');
-  gallery.innerHTML = SALON_PHOTOS.map(
-    (p, i) => `<figure class="shot s${i + 1}" data-i="${i}">
-      ${photo(p.src, p.caption)}
-      <figcaption>${p.caption}</figcaption>
-    </figure>`
-  ).join('');
-  const lb = document.getElementById('lightbox');
-  gallery.addEventListener('click', (e) => {
-    const f = e.target.closest('.shot.loaded');
-    if (!f) return;
-    const p = SALON_PHOTOS[f.dataset.i];
-    lb.querySelector('img').src = p.src;
-    lb.querySelector('img').alt = p.caption;
-    lb.querySelector('.lb-caption').textContent = p.caption;
-    lb.showModal();
-  });
-  lb.addEventListener('click', (e) => {
-    if (e.target === lb || e.target.closest('.lb-close')) lb.close();
-  });
+  // Основатель
+  document.getElementById('owner-photo').innerHTML =
+    photo(OWNER.photo, OWNER.name) + '<figcaption>фото основателя</figcaption>';
+  document.getElementById('owner-name').textContent = OWNER.name;
+  document.getElementById('owner-role').textContent = OWNER.role;
+  document.getElementById('owner-bio').innerHTML = OWNER.bio.map((t) => `<p>${t}</p>`).join('');
+  document.getElementById('owner-quote').textContent = OWNER.quote;
+  document.getElementById('owner-book').dataset.text =
+    `Здравствуйте, ${OWNER.name.split(' ')[0]}! Хочу записаться.`;
 
   // Контакты
   document.querySelectorAll('.js-tg').forEach((a) => {
@@ -152,7 +140,7 @@
       }),
     { threshold: 0.12 }
   );
-  document.querySelectorAll('.section-head, .card, .point, .work, .shot, .contacts-inner').forEach((el) => {
+  document.querySelectorAll('.section-head, .card, .work, .owner-photo, .owner-text, .contacts-inner').forEach((el) => {
     el.classList.add('rise');
     io.observe(el);
   });

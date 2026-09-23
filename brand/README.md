@@ -9,11 +9,12 @@
 | `torte-logo-stacked.svg` / `-ivory` | Основной: знак над надписью, «HAIR STUDIO · MOSCOW» |
 | `torte-logo-horizontal.svg` / `-ivory` | Шапка сайта, бланки, узкие места |
 | `torte-logo-compact.svg` / `-ivory` | Черепаха + TORTÉ без подписи — шапка сайта, аватарки |
+| `torte-logo-nav-*.svg` | Шапка сайта: знак + TORTÉ + «HAIR STUDIO · MOSCOW» в одну строку (`-gold-light` — на сайте) |
 | `torte-mark.svg` / `-ivory` | Только черепаха |
 | `torte-wordmark.svg` / `-ivory` | Только надпись |
 | `favicon.svg` | Иконка сайта |
 
-`-ivory` — светлые версии для тёмного/оливкового фона.
+`-ivory` — светлые версии для тёмного/оливкового фона, `-gold` — золото #C5A66A, `-gold-light` — светлое золото #E6CF9A для шалфейного фона.
 
 ---
 
