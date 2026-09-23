@@ -17,15 +17,17 @@
 <header class="frame hero" id="top">
   <div class="hero-bg" aria-hidden="true">
     <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span>
-    <!-- Положите фото в img/hero.jpg — оно появится здесь автоматически -->
-    <img class="hero-photo" src="img/hero.jpg" alt="" onerror="this.remove()">
+    <!-- Портрет (img/hero.jpg, 640×680) и золотые линии вокруг силуэта — в одной системе координат -->
+    <div class="hero-portrait">
+      <img class="hero-photo" src="img/hero.jpg" alt="" onerror="this.parentNode.remove()">
+      <svg class="strands" viewBox="0 0 640 680" aria-hidden="true"><g transform="translate(40 80)">
+        <path class="s1" d="M-60 700 C0 610 60 520 82 420 C100 330 96 230 118 150 C140 70 200 18 272 8 C352 -2 420 40 450 110 C476 170 520 150 600 60 C640 15 680 -10 740 -30"/>
+        <path class="s2" d="M700 170 C600 200 500 190 462 260 C438 305 452 360 510 372 C560 382 610 350 640 380 C670 410 690 460 760 470"/>
+        <path class="s3" d="M-340 350 C-180 300 20 290 64 372 C92 425 50 470 12 452 C-20 436 -6 400 30 396"/>
+      </g></svg>
+    </div>
   </div>
 
-  <svg class="strands" viewBox="0 0 1200 800" preserveAspectRatio="none" aria-hidden="true">
-    <path class="s1" d="M760 -20 C 620 120, 380 260, 430 420 C 470 560, 700 470, 640 380 C 590 300, 420 420, 520 600 C 590 720, 560 800, 540 840"/>
-    <path class="s2" d="M820 -20 C 700 160, 520 300, 600 470 C 660 590, 820 520, 790 440"/>
-    <path class="s3" d="M300 520 C 520 460, 760 420, 880 440 C 960 455, 900 500, 820 490"/>
-  </svg>
 
   <nav class="nav">
     <a class="logo" href="#top"><img src="brand/final/torte-logo-nav-gold-light.svg" alt="TORTÉ — hair studio, Moscow"></a>
