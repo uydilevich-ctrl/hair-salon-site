@@ -14,19 +14,17 @@
 <body>
 
 <!-- ============ HERO ============ -->
-<header class="frame hero" id="top">
+<header class="frame hero hero-video" id="top">
   <div class="hero-bg" aria-hidden="true">
-    <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span>
+    <!-- Видео-обложка: без звука, по кругу; постер — первый кадр -->
+    <video class="hero-film" autoplay muted loop playsinline preload="auto" poster="video/hero-poster.jpg">
+      <source src="video/hero.mp4" type="video/mp4">
+      <source src="video/hero.webm" type="video/webm">
+    </video>
   </div>
 
-  <svg class="strands" viewBox="0 0 1200 800" preserveAspectRatio="none" aria-hidden="true">
-    <path class="s1" d="M760 -20 C 620 120, 380 260, 430 420 C 470 560, 700 470, 640 380 C 590 300, 420 420, 520 600 C 590 720, 560 800, 540 840"/>
-    <path class="s2" d="M820 -20 C 700 160, 520 300, 600 470 C 660 590, 820 520, 790 440"/>
-    <path class="s3" d="M300 520 C 520 460, 760 420, 880 440 C 960 455, 900 500, 820 490"/>
-  </svg>
-
   <nav class="nav">
-    <a class="logo" href="#top"><img src="brand/final/torte-logo-nav-gold-light.svg" alt="TORTÉ — hair studio, Moscow"></a>
+    <a class="logo logo-mark" href="#top" aria-label="TORTÉ — на главную"><img src="brand/final/torte-mark.svg" alt=""></a>
     <button class="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span></button>
     <ul class="menu">
       <li><a href="#services">Услуги</a></li>
@@ -34,15 +32,31 @@
       <li><a href="#works">Работы</a></li>
       <li><a href="#owner">Основатель</a></li>
       <li><a href="#contacts">Контакты</a></li>
-      <li><a class="pill pill-light js-tg" href="#" data-text="Здравствуйте! Хочу записаться.">Записаться <i>→</i></a></li>
+      <li><a class="pill pill-olive js-tg" href="#" data-text="Здравствуйте! Хочу записаться.">Записаться <i>→</i></a></li>
     </ul>
   </nav>
 
   <div class="hero-content">
-    <h1 class="reveal">Волосы,<br>которые <em>говорят</em><br>за вас.</h1>
-    <div class="hero-side reveal d2">
-      <p>Стрижки, окрашивание, наращивание и уход в спокойной атмосфере. Мы подбираем форму и цвет под вас — без спешки и шаблонов.</p>
-      <a class="pill pill-sage" href="#prices">Выбрать услугу <i>→</i></a>
+    <div class="brand">
+      <img class="brand-mark" src="brand/final/torte-mark.svg" alt="">
+      <div class="brand-words">
+        <h1><img class="brand-name" src="brand/final/torte-wordmark.svg" alt="TORTÉ"></h1>
+        <span class="brand-sub">Hair studio · Moscow</span>
+      </div>
+    </div>
+
+    <p class="tagline">
+      <span class="t1">Волосы</span>
+      <span class="t2"><em>с&nbsp;характером</em>
+        <svg class="tag-stroke" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M2 16 C 60 4, 110 22, 160 12 S 250 2, 298 12"/>
+        </svg>
+      </span>
+    </p>
+
+    <div class="hero-side">
+      <p>Стрижки, окрашивание, наращивание и уход в спокойной атмосфере. Подбираем форму и цвет под вас — без спешки и шаблонов.</p>
+      <a class="pill pill-olive" href="#prices">Выбрать услугу <i>→</i></a>
     </div>
   </div>
 </header>

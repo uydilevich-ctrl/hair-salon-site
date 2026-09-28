@@ -118,6 +118,13 @@
   document.querySelector('.js-phone-text').textContent = CONFIG.phone;
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  // Видео-обложка: при «уменьшении движения» оставляем постер
+  const film = document.querySelector('.hero-film');
+  if (film && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    film.removeAttribute('autoplay');
+    film.pause();
+  }
+
   // Мобильное меню
   const nav = document.querySelector('.nav');
   const burger = document.querySelector('.burger');
