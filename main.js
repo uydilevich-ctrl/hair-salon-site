@@ -138,13 +138,24 @@
     requestAnimationFrame(() => tagline.classList.add('in'));
 
     // каждый новый круг видео: по «с характером» проходит золотая волна, штрих рисуется заново
+    // золотой блик, бегущий по линиям черепахи: копии контуров поверх
+    const markSvg = document.querySelector('.brand-mark');
+    if (markSvg) {
+      const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      g.setAttribute('class', 'glint');
+      markSvg.querySelectorAll('path').forEach((p) => g.appendChild(p.cloneNode()));
+      markSvg.appendChild(g);
+    }
+
+    // каждый круг видео: блик по черепахе → буквы TORTÉ → линия → волна по слогану
+    const heroContent = document.querySelector('.hero-video .hero-content');
     const wave = () => {
       if (calm) return;
-      tagline.classList.remove('in', 'wave');
+      tagline.classList.remove('in');
       tagline.querySelectorAll('.ch').forEach((c) => { c.style.opacity = 1; c.style.transform = 'none'; c.style.filter = 'none'; });
-      tagline.style.setProperty('--sd', '.5s');
-      void tagline.offsetWidth;
-      tagline.classList.add('wave');
+      heroContent.classList.remove('wave');
+      void heroContent.offsetWidth;
+      heroContent.classList.add('wave');
     };
     if (film && !calm) {
       let last = 0, timer;
