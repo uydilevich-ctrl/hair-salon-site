@@ -120,9 +120,42 @@
 
   // Видео-обложка: при «уменьшении движения» оставляем постер
   const film = document.querySelector('.hero-film');
-  if (film && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (film && calm) {
     film.removeAttribute('autoplay');
     film.pause();
+  }
+
+  // Слоган: режем на буквы; «Волосы» появляются вместе с первой прядью, «с характером» — следом
+  const tagline = document.querySelector('.tagline');
+  if (tagline) {
+    tagline.querySelectorAll('.js-split').forEach((el, w) => {
+      const delay = w === 0 ? 1.3 : 1.9;
+      el.innerHTML = [...el.textContent]
+        .map((c, i) => `<span class="ch" aria-hidden="true" style="--i:${i};--d:${delay}s">${c === ' ' ? '&nbsp;' : c}</span>`)
+        .join('');
+    });
+    requestAnimationFrame(() => tagline.classList.add('in'));
+
+    // каждый новый круг видео: по «с характером» проходит золотая волна, штрих рисуется заново
+    const wave = () => {
+      if (calm) return;
+      tagline.classList.remove('in', 'wave');
+      tagline.querySelectorAll('.ch').forEach((c) => { c.style.opacity = 1; c.style.transform = 'none'; c.style.filter = 'none'; });
+      tagline.style.setProperty('--sd', '.5s');
+      void tagline.offsetWidth;
+      tagline.classList.add('wave');
+    };
+    if (film && !calm) {
+      let last = 0, timer;
+      film.addEventListener('timeupdate', () => {
+        if (film.currentTime + 0.5 < last) {        // видео пошло на новый круг
+          clearTimeout(timer);
+          timer = setTimeout(wave, 1300);            // когда из линии появляются волосы
+        }
+        last = film.currentTime;
+      });
+    }
   }
 
   // Мобильное меню
