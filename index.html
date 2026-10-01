@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TORTÉ — студия волос в Москве</title>
+<meta name="description" content="Стрижки, окрашивание, наращивание, укладки и уход за волосами в Москве. Запись в Telegram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="brand/final/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="frame hero hero-video" id="top">
+  <div class="hero-bg" aria-hidden="true">
+    <!-- Видео-обложка: без звука, по кругу; постер — первый кадр -->
+    <video class="hero-film" autoplay muted loop playsinline preload="auto" poster="video/hero-poster.jpg">
+      <source src="video/hero.mp4" type="video/mp4">
+      <source src="video/hero.webm" type="video/webm">
+    </video>
+  </div>
+
+  <nav class="nav">
+    <button class="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span></button>
+    <ul class="menu">
+      <li><a href="#services">Услуги</a></li>
+      <li><a href="#prices">Прайс</a></li>
+      <li><a href="#works">Работы</a></li>
+      <li><a href="#owner">Основатель</a></li>
+      <li><a href="#contacts">Контакты</a></li>
+      <li><a class="pill pill-olive js-tg" href="#" data-text="Здравствуйте! Хочу записаться.">Записаться <i>→</i></a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-content">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="12 30 172 88" aria-hidden="true"><path pathLength="1" d="M60.0 92 A52 50 0 0 1 164.0 92" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path pathLength="1" d="M56 92 L168 92" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path pathLength="1" d="M94.8 92 A17.16 50 0 0 1 129.2 92" fill="none" stroke="currentColor" stroke-width="1.7999999999999998" stroke-linecap="round" stroke-linejoin="round"/><path pathLength="1" d="M77.7 92 A34.32 50 0 0 1 146.3 92" fill="none" stroke="currentColor" stroke-width="1.7999999999999998" stroke-linecap="round" stroke-linejoin="round"/><path pathLength="1" d="M65.3 70.0 Q112 63.0 158.7 70.0" fill="none" stroke="currentColor" stroke-width="1.7999999999999998" stroke-linecap="round" stroke-linejoin="round"/><path pathLength="1" d="M66 71 C56 69 50 62 48 54 C46 46 40 42 33 43 C26 44 21 49 22 54 C23 58 28 60 34 59 C40 58 42 64 44 72 C47 82 54 88 62 88" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path pathLength="1" d="M73 92 C66 101 63 110 69 112.5 C75 115 81 106 86 92" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path pathLength="1" d="M139 92 C141 104 147 113 154 111 C161 109 158 99 152 91" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path pathLength="1" d="M163 87 C171 88 176 84 174 79 C172 75 167 77 168 81" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="50.5" r="1.80" fill="currentColor"/></svg>
+      <div class="brand-words">
+        <h1 class="brand-name" aria-label="TORTÉ"><span>T</span><span>O</span><span>R</span><span>T</span><span>É</span></h1>
+        <span class="brand-sub">Hair studio · Moscow</span>
+      </div>
+    </div>
+
+    <p class="tagline" aria-label="Волосы с характером">
+      <span class="t1 js-split">Волосы</span>
+      <span class="t2"><em class="js-split">с характером</em>
+        <svg class="tag-stroke" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true">
+          <path pathLength="1" d="M2 16 C 60 4, 110 22, 160 12 S 250 2, 298 12"/>
+        </svg>
+      </span>
+    </p>
+
+    <div class="hero-side">
+      <p>Стрижки, окрашивание, наращивание и уход в спокойной атмосфере. Подбираем форму и цвет под вас — без спешки и шаблонов.</p>
+      <a class="pill pill-olive" href="#prices">Выбрать услугу <i>→</i></a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SERVICES ============ -->
+<section class="frame paper" id="services">
+  <div class="section-head">
+    <span class="eyebrow">01 — Услуги</span>
+    <h2>Всё, что нужно <em>вашим волосам</em></h2>
+  </div>
+  <div class="cards" id="cards"></div>
+</section>
+
+<!-- ============ PRICES ============ -->
+<section class="frame paper" id="prices">
+  <div class="section-head">
+    <span class="eyebrow">02 — Прайс</span>
+    <h2>Цены</h2>
+    <p class="muted">Итоговая стоимость зависит от длины и густоты волос — мастер назовёт её на консультации.</p>
+  </div>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="price-list" id="price-list"></div>
+</section>
+
+<!-- ============ WORKS ============ -->
+<section class="frame paper" id="works">
+  <div class="section-head">
+    <span class="eyebrow">03 — Работы</span>
+    <h2>До и <em>после</em></h2>
+    <p class="muted">Потяните разделитель, чтобы сравнить.</p>
+  </div>
+  <div class="works" id="works-list"></div>
+</section>
+
+<!-- ============ OWNER ============ -->
+<section class="frame mist owner" id="owner">
+  <figure class="owner-photo" id="owner-photo"></figure>
+  <div class="owner-text">
+    <span class="eyebrow">04 — Основатель</span>
+    <h2 id="owner-name"></h2>
+    <p class="owner-role" id="owner-role"></p>
+    <div class="owner-bio" id="owner-bio"></div>
+    <blockquote class="owner-quote" id="owner-quote"></blockquote>
+    <a class="pill pill-olive js-tg" href="#" id="owner-book" data-text="Здравствуйте! Хочу записаться.">Записаться <i>→</i></a>
+  </div>
+</section>
+
+<!-- ============ CONTACTS ============ -->
+<section class="frame hero contacts" id="contacts">
+  <div class="hero-bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b3"></span><span class="blob b4"></span></div>
+  <div class="contacts-inner">
+    <div>
+      <span class="eyebrow light">05 — Запись</span>
+      <h2>Запишитесь<br><em>в пару касаний</em></h2>
+      <p>Напишите нам в Telegram — ответим, подберём мастера и удобное время.</p>
+      <div class="actions">
+        <a class="pill pill-light js-tg" href="#" data-text="Здравствуйте! Хочу записаться.">Написать в Telegram <i>→</i></a>
+        <a class="pill pill-ghost js-wa" href="#">WhatsApp</a>
+        <a class="pill pill-ghost js-phone" href="#">Позвонить</a>
+      </div>
+    </div>
+    <dl class="info">
+      <div><dt>Адрес</dt><dd class="js-address"></dd></div>
+      <div><dt>Часы работы</dt><dd class="js-hours"></dd></div>
+      <div><dt>Телефон</dt><dd class="js-phone-text"></dd></div>
+    </dl>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <span class="foot-brand"><img src="brand/final/torte-mark-gold.svg" alt="" aria-hidden="true">© <span id="year"></span> TORTÉ hair studio</span>
+  <a href="#top">Наверх ↑</a>
+</footer>
+
+<script src="data.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
